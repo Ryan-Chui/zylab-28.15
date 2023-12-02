@@ -28,15 +28,19 @@
    
    PlaylistNode* GetNext(){return nextNodePtr;}
    
-   void InsertAfter(PlaylistNode* nodePtr){
+   void InsertAfter(PlaylistNode* nodeLoc){
+         if(nodeLoc != NULL){
+         IntNode* holder = this->nextNodeRef;
+         this->nextNodeRef = nodeLoc;
+         nodeLoc->InsertAfter(holder);
+      }
+   }
+   
+   void SetNext(PlaylistNode* nodePtr){
       PlaylistNode* tmpNext;
 	   tmpNext = this->nextNodePtr;
 	   this->nextNodeRef = nodePtr;
 	   nodePtr->nextNodeRef = tmpNext;
-   }
-   
-   void SetNext(PlaylistNode* nodePtr){
-      
       
    }
    
