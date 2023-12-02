@@ -1,48 +1,58 @@
 #include <iostream>
-#include "SongNode.h"
+#include "PlaylistNode.h"
 
-// TODO: Write PrintPlaylist() function
-void PrintPlaylist(SongNode* HeadNode){
-   SongNode* currNode = HeadNode->GetNext();
-	while (currNode != NULL) {
-		currNode->PrintSongInfo();
-		if(currNode->GetNext() != nullptr){
-		cout << endl;}
-		currNode = currNode->GetNext();
-	}
+using namespace std;
+
+void PrintMenu(const string playlistTitle) {
+   /* Type your code here */
+   cout << playlistTitle << " PLAYLIST MENU" << endl;
+   cout << "a - Add song" << endl;
+   cout << "d - Remove song" << endl;
+   cout << "c - Change position of song" << endl;
+   cout << "s - Output songs by specific artist" << endl;
+   cout << "t - Output total time of playlist (in seconds)" << endl;
+   cout << "o - Output full playlist" << endl;
+   cout << "q - Quit" << endl << endl;
+
+   cout << "Choose an option:" << endl;
+   
 }
 
+PlaylistNode* ExecuteMenu(char option, string playlistTitle, PlaylistNode* headNode) {
+   /* Type your code here */
+switch (option) {
+  case 'a':
+    
+    break;
+  case 'd':
+    break;
+  case 'c':
+    break;
+  case 's':
+    break;
+  case 't':
+    break;
+  case 'o':
+    break;
+  case 'q':
+    break;
+   
+}
 
 int main() {
-	SongNode* headNode;
-	SongNode* currNode;
-	SongNode* lastNode;
-
-	string songTitle;
-	string songLength;
-	string songArtist;
-
-	// Front of nodes list                                                                         
-	headNode = new SongNode();
-	lastNode = headNode;
-
-	// Read user input until -1  entered
-	getline(cin, songTitle);
-	while (songTitle != "-1") {
-		getline(cin, songLength);
-		getline(cin, songArtist);
-
-		currNode = new SongNode(songTitle, songLength, songArtist);
-		lastNode->InsertAfter(currNode);
-		lastNode = currNode;
-
-		getline(cin, songTitle);
-	}
-
-	// Print linked list
-	cout << "LIST OF SONGS" << endl;
-	cout << "-------------" << endl;
-	PrintPlaylist(headNode);
-	
-	return 0;
+   /* Type your code here */
+   PlaylistNode* headNode;
+   string playlistName;
+   char input;
+   
+   cout << "Enter playlist's title:" << endl;
+   cin >> playlistName;
+   PrintMenu(playlistName);
+   cin >> input;
+   while(input != q)
+   ExcecuteMenu(input, playlistName, headNode);
+   PrintMenue(playlistName);
+   cin >> input;
+   return 0;
 }
+
