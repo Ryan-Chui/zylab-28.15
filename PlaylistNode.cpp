@@ -37,10 +37,7 @@
    }
    
    void SetNext(PlaylistNode* nodePtr){
-      PlaylistNode* tmpNext;
-	   tmpNext = this->nextNodePtr;
-	   this->nextNodeRef = nodePtr;
-	   nodePtr->nextNodeRef = tmpNext;
+      nextPtrNode->nodePtr;
       
    }
    
