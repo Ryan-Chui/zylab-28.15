@@ -10,38 +10,46 @@
 	   
 	}
 	  
-	PlaylistNode::PlaylistNode(string id, string name, string artist, int length, PlaylistNode* node){
+	PlaylistNode::PlaylistNode(string id, string name, string artist, int length){
 	   uniqueID = id;
 	   songName = name;
-	   songArtist = artist;
+	   artistName = artist;
 	   songLength = length;
-	   nextNodePtr->node;
+	   nextNodePtr = NULL;
 	}
 	
-	string GetID(){return uniqueID;}
+	string PlaylistNode::GetID(){return uniqueID;}
    
-   string GetSongName(){return songName;}
+   string PlaylistNode::GetSongName(){return songName;}
    
-   string GetArtistName(){return songArtist;}
+   string PlaylistNode::GetArtistName(){return artistName;}
    
-   int GetSongLength(){return songLength;}
+   int PlaylistNode::GetSongLength(){return songLength;}
    
-   PlaylistNode* GetNext(){return nextNodePtr;}
+   PlaylistNode* PlaylistNode::GetNext(){return nextNodePtr;}
    
-   void InsertAfter(PlaylistNode* nodeLoc){
+   void PlaylistNode::InsertAfter(PlaylistNode* nodeLoc){
          if(nodeLoc != NULL){
-         IntNode* holder = this->nextNodeRef;
-         this->nextNodeRef = nodeLoc;
+         PlaylistNode* holder = this->nextNodePtr;
+         this->nextNodePtr = nodeLoc;
          nodeLoc->InsertAfter(holder);
       }
    }
    
-   void SetNext(PlaylistNode* nodePtr){
-      nextPtrNode->nodePtr;
-      
+   void PlaylistNode::SetNext(PlaylistNode* nodePtr){
+      PlaylistNode* tmpNext;
+	   tmpNext = this->nextNodePtr;
+	   if(tmpNext == NULL){
+	      this->InsertAfter(nodePtr);
+	   }else{
+	   while(tmpNext->GetNext() != NULL){
+	      tmpNext = tmpNext->GetNext();
+	      }
+	      tmpNext->InsertAfter(nodePtr);
+	   }
    }
    
-   void PrintPlaylistNode(){
+   void PlaylistNode::PrintPlaylistNode(){
       cout << "Unique ID: " << uniqueID << endl;
       cout << "Song Name: " << songName << endl;
       cout << "Artist Name: " << artistName << endl;
